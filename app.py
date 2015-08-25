@@ -4,6 +4,10 @@ from flask import Flask
 #create the application object
 app=Flask(__name__)
 
+#error handling and autoreload on change
+app.config["DEBUG"]=True
+
+
 #use decorators to link the function to a url
 @app.route("/")
 @app.route("/hello")
@@ -33,7 +37,12 @@ def path_type(value):
     print value
     return "correct"
     
-    
+@app.route("/name/<name>")
+def index(name):
+    if name.lower()=='luis':
+        return "Hello, {}".format(name),200
+    else:
+        return "Not found",404
 if __name__=="__main__":
     app.run()
     
