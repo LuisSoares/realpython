@@ -14,9 +14,25 @@ def hello_world():
     return "Hello,World!"
 
 #dynamic route
-@app.route("/test")
-def search():
-    return "Hello"
+@app.route("/test/<search_query>")
+def search(search_query):
+    return "Hello {}".format(search_query)
+    
+@app.route("/integer/<int:value>")
+def int_type(value):
+    print value+1
+    return "Correct"
+    
+@app.route("/float/<float:value>")
+def float_type(value):
+    print value+1
+    return "Correct"
+    
+@app.route("/path/<path:value>")
+def path_type(value):
+    print value
+    return "correct"
+    
     
 if __name__=="__main__":
     app.run()
