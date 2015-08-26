@@ -20,7 +20,7 @@ app.config.from_object(__name__)
 #connection to the database
 def connect_db():
     return sqlite3.connect(app.config['DATABASE'])
-
+test='test of error'
 @app.route('/',methods=['GET','POST'])
 def login():
     error=None
